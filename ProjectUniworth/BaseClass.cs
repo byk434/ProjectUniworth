@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -18,7 +19,7 @@ namespace ProjectUniworth
         public static IWebDriver driver;
         private static object wait;
 
-        public static object ExpectedConditions { get; private set; }
+        public static object ExpectedConditions { get; set; }
 
         public static IWebDriver BrowserImplemented(string browser)
 
@@ -30,7 +31,7 @@ namespace ProjectUniworth
                 chromeOption.AddArguments("start-maximized");
                 chromeOption.AddArguments("incognito");
                 chromeOption.AddArguments("disable-popup-blocking");
-                chromeOption.AddArguments("headless");
+                //chromeOption.AddArguments("headless");
                 driver = new ChromeDriver(chromeOption);
 
 
@@ -76,7 +77,7 @@ namespace ProjectUniworth
 
         {
             Actions actions = new Actions(driver);
-            //actions.MoveToElement(driver.FindElement(by));
+
             actions.MoveToElement(driver.FindElement(by)).Perform();
         }
         public static void HoverClick(By by)
@@ -84,7 +85,7 @@ namespace ProjectUniworth
         {
             Actions actions = new Actions(driver);
             actions.MoveToElement(driver.FindElement(by)).Click().Perform();
-            //actions.MoveToElement(driver.FindElement(by)).Click();
+            
         }
         public static void Maximize()
         {
@@ -104,12 +105,24 @@ namespace ProjectUniworth
         //{
         //    throw new NotImplementedException();
         //}
-        public static void Scroll(By by)
+        public static void ScrollToElement(By by)
         { 
             var scrollToElement = driver.FindElement(by);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", scrollToElement);
-            //driver.FindElement(by);
-            //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", by);
+        }
+        //public static void Scroll(int value, int value1)
+        //{
+        //    ((IJavaScriptExecutor("window.scrollBy(0,600);"));
+
+        //    js.ExecuteScript("window.scrollBy(argument[0].argument[1]);", value, value1);
+        //    js.ExecuteScript("window.scrollBy(0,600);");
+        //}
+        public static void Scroll()
+        {
+            //(IJavaScriptExecutor.Equals("window.scrollBy(0,600);"));
+
+            //js.ExecuteScript("window.scrollBy(argument[0].argument[1]);", value, value1);
+            //js.ExecuteScript("window.scrollBy(0,600);");
         }
 
     }

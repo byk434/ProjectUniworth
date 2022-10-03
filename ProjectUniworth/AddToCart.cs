@@ -43,7 +43,7 @@ namespace ProjectUniworth
             Click(searchButton);
             Write(searchBar, text);
             Click(searchButton2);
-            Scroll(productTile);
+            ScrollToElement(productTile);
             Hover(productTile);
             Click(addToCartButton);
             Click(headerItemCartButton);
@@ -59,7 +59,7 @@ namespace ProjectUniworth
             Click(searchButton);
             Write(searchBar, text);
             Click(searchButton2);
-            Scroll(productTile);
+            ScrollToElement(productTile);
             Click(productTile);
             Click(sizeOfItem);
             Click(addItemToCartButton);

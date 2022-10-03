@@ -7,9 +7,15 @@ using OpenQA.Selenium.Edge;
 
 namespace ProjectUniworth
 {
+   
+
+
     [TestClass]
     public class UnitTest1:BaseClass
     {
+        private static readonly log4net.ILog log =
+   log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
         //public TestContext instance;
         //public TestContext TestContext
@@ -39,7 +45,7 @@ namespace ProjectUniworth
         //    loginValidData.LoginData(user,pass);
 
 
-        
+
         //}
         //[TestMethod]
         //public void LogInUserInvalidDataTest()
@@ -52,6 +58,8 @@ namespace ProjectUniworth
         [TestMethod]
         public void LogInInUserWithInvalidDataTest()
         {
+            log.Info("Test Method is working");
+
             BaseClass.BrowserImplemented("chrome");
             BaseClass.OpenUrl("https://uniworthshop.com");
             InvalidLogin loginInvalidData = new InvalidLogin();
@@ -164,6 +172,38 @@ namespace ProjectUniworth
             BaseClass.OpenUrl("https://uniworthshop.com");
             FilterBar filterBarSelectColor = new FilterBar();
             filterBarSelectColor.FilterBarFunction();
+        }
+        [TestMethod]
+        public void Extra()
+        {
+            BaseClass.BrowserImplemented("edge");
+            BaseClass.OpenUrl("https://api.whatsapp.com/send/?phone=923454037778&text&type=phone_number&app_absent=0");
+            ChatWithUs chatWA = new ChatWithUs();
+            chatWA.WA();
+        }
+        [TestMethod]
+        public void ChatWithUsFunctionalityTestCase()
+        {
+            BaseClass.BrowserImplemented("edge");
+            BaseClass.OpenUrl("https://uniworthshop.com");
+            ChatWithUs chatWithUs = new ChatWithUs();
+            chatWithUs.ChatWithUsFunctionality();
+        }
+        [TestMethod]
+        public void SortingFunctionalityTestCase()
+        {
+            BaseClass.BrowserImplemented("edge");
+            BaseClass.OpenUrl("https://uniworthshop.com");
+            SortingFunctionality sortingFunctionality = new SortingFunctionality();
+            sortingFunctionality.SortingFunction();
+        }
+        [TestMethod]
+        public void FindOurStoreFunctionalityTestCase()
+        {
+            BaseClass.BrowserImplemented("edge");
+            BaseClass.OpenUrl("https://uniworthshop.com");
+            FindOurStore findStore = new FindOurStore();
+            findStore.findStore();
         }
     }
 }
