@@ -40,7 +40,7 @@ namespace ProjectUniworth
             {
                 EdgeOptions edgeOption = new EdgeOptions();
                 edgeOption.AddArguments("start-maximized");
-
+                edgeOption.AddArguments("incognito");
                 driver = new EdgeDriver();
             }
             else if (browser == "firefox")
