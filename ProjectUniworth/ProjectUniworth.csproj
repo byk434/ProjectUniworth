@@ -67,8 +67,11 @@
   <ItemGroup>
     <Compile Include="AddToCart.cs" />
     <Compile Include="BaseClass.cs" />
+    <Compile Include="ChatWithUs.cs" />
+    <Compile Include="FilterBar.cs" />
     <Compile Include="InvalidLogin.cs" />
     <Compile Include="LoginClass.cs" />
+    <Compile Include="NavigationBar.cs" />
     <Compile Include="NewsletterSubscription.cs" />
     <Compile Include="RegisterUser.cs" />
     <Compile Include="SearchClass.cs" />

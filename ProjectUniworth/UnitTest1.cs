@@ -141,13 +141,29 @@ namespace ProjectUniworth
 
         public void viewas()
         {
-            BaseClass.BrowserImplemented("chrome");
+            BaseClass.BrowserImplemented("edge");
             BaseClass.OpenUrl("https://www.junaidjamshed.com");
 
             AddToCart grid1 = new AddToCart();
             grid1.View();
 
 
+        }
+        [TestMethod]
+        public void NavigationBarFunctionalityTestCase()
+        {
+            BaseClass.BrowserImplemented("edge");
+            BaseClass.OpenUrl("https://uniworthshop.com");
+            NavigationBar navBar = new NavigationBar();
+            navBar.NavigationBarFunction();
+        }
+        [TestMethod]
+        public void FilterBarFunctionalityTestCase()
+        {
+            BaseClass.BrowserImplemented("edge");
+            BaseClass.OpenUrl("https://uniworthshop.com");
+            FilterBar filterBarSelectColor = new FilterBar();
+            filterBarSelectColor.FilterBarFunction();
         }
     }
 }

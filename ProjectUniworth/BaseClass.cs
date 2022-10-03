@@ -30,7 +30,7 @@ namespace ProjectUniworth
                 chromeOption.AddArguments("start-maximized");
                 chromeOption.AddArguments("incognito");
                 chromeOption.AddArguments("disable-popup-blocking");
-                //chromeOption.AddArguments("headless");
+                chromeOption.AddArguments("headless");
                 driver = new ChromeDriver(chromeOption);
 
 
@@ -40,12 +40,18 @@ namespace ProjectUniworth
             {
                 EdgeOptions edgeOption = new EdgeOptions();
                 edgeOption.AddArguments("start-maximized");
-                edgeOption.AddArguments("incognito");
-                driver = new EdgeDriver();
+                edgeOption.AddArguments("-inprivate");
+                edgeOption.AddArguments("disable-popup-blocking");
+                //edgeOption.AddArguments("headless");
+                driver = new EdgeDriver(edgeOption);
             }
             else if (browser == "firefox")
             {
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOption = new FirefoxOptions();
+                firefoxOption.AddArguments("start-maximized");
+                firefoxOption.AddArguments("newprivate");
+                //firefoxOption.AddArguments("disable-popup-blocking");
+                driver = new FirefoxDriver(firefoxOption);
             }
             return driver;
         }
@@ -77,8 +83,8 @@ namespace ProjectUniworth
 
         {
             Actions actions = new Actions(driver);
-            actions.MoveToElement(driver.FindElement(by)).Perform();
-            actions.MoveToElement(driver.FindElement(by)).Click();
+            actions.MoveToElement(driver.FindElement(by)).Click().Perform();
+            //actions.MoveToElement(driver.FindElement(by)).Click();
         }
         public static void Maximize()
         {
@@ -108,3 +114,13 @@ namespace ProjectUniworth
 
     }
 }
+
+
+
+
+
+
+
+
+
+
