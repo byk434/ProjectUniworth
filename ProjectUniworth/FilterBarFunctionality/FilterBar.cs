@@ -9,17 +9,18 @@ namespace ProjectUniworth
 {
     internal class FilterBar : BaseClass
     {
-        By newsletter = By.XPath("(//button[@class='close'])[4]");
         By navigationBarShirts = By.XPath("(//a[@class='dropdown-toggle menu-ib-parent main-men-line-ib'])[2]");
         By colorFilter = By.XPath("(//h2[@class='filter-name-ib'])[6]");
+        //By colorFilter = By.XPath("//h2[text()='Color']");
         By selectedColor = By.XPath("//input[@value='Pista Green']");
+        By selectedItemColor = By.XPath("//a[text()='Self pista green tailored smart fit shirt']");
         public void FilterBarFunction()
         {
-            Click(newsletter);
-            HoverClick(navigationBarShirts);
+            Click(navigationBarShirts);            
             Click(colorFilter);
-            Click(selectedColor);
-            
+            HoverClick(selectedColor);
+            ExplicitWait(selectedItemColor, 10);
+            GetElement(selectedItemColor);
         }
     }
 }
