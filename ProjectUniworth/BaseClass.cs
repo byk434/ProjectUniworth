@@ -20,6 +20,7 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using SikuliModule;
 using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Serialization;
 
 namespace ProjectUniworth
 {
@@ -55,29 +56,108 @@ namespace ProjectUniworth
             }
             else if (browser == "firefox")
             {
-                //FirefoxOptions firefoxOption = new FirefoxOptions();
-                //firefoxOption.AddArguments("start-maximized");
-                //firefoxOption.AddArguments("newprivate");
-                //firefoxOption.AddArguments("disable-popup-blocking");
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOption = new FirefoxOptions();
+                firefoxOption.AddArguments("start-maximized");
+                firefoxOption.AddArguments("newprivate");
+                firefoxOption.AddArguments("disable-popup-blocking");
+                driver = new FirefoxDriver(firefoxOption);
             }
             return driver;
         }
+        
         public void Write(By by, string value)
         {
-            driver.FindElement(by).SendKeys(value);
+            try
+            {
+                driver.FindElement(by).SendKeys(value);
+                TakeScreenshot(Status.Pass, "Enter Text");
+            }
+            catch (Exception ex)
+            {
+
+                TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
+            }
         }
         public void WriteEnter(By by, string value)
-        {
-            driver.FindElement(by).SendKeys(value + Keys.Enter);
+        { try
+            {
+                driver.FindElement(by).SendKeys(value + Keys.Enter);
+                TakeScreenshot(Status.Pass, "Enter Text");
+            }
+            catch (Exception ex)
+            {
+                TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
+            }
+            
         }
         public void WriteTab(By by, string value)
         {
             driver.FindElement(by).SendKeys(value + Keys.Tab);
         }
-        public static void Click(By by)
+        public void Click(By by)
         {
-            driver.FindElement(by).Click();
+            try
+            {
+                driver.FindElement(by).Click();
+                TakeScreenshot("Click Element");
+            }
+            catch (Exception)
+            {
+                TakeScreenshot(Status.Fail, "Element not Clicked");
+            }
+        }
+        public static void TakeScreenshot(string stepDetail)
+        {
+            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
+            image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
+            ExtentReport.exChildTest.Log(Status.Pass, stepDetail, MediaEntityBuilder.CreateScreenCaptureFromPath(path + ".png").Build());
+        }
+        public static void TakeScreenshot(Status status, string stepDetail)
+        {
+            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
+            image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
+            ExtentReport.exChildTest.Log(status, stepDetail, MediaEntityBuilder.CreateScreenCaptureFromPath(path + ".png").Build());
+        }
+        public IWebElement WaitforElement(By by, int timeToReadyElement = 0)
+        {
+            IWebElement element = null;
+            try
+            {
+                if (timeToReadyElement != 0 && timeToReadyElement.ToString() != null)
+                {
+                    Wait(timeToReadyElement * 1000);
+                }
+                element = driver.FindElement(by);
+            }
+            catch
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+                wait.Until(driver => IsPageReady(driver) == true && IsElementVisible(by) == true && IsClickable(by) == true);
+                element = driver.FindElement(by);
+            }
+            return element;
+        }
+        private bool IsElementVisible(By by)
+        {
+            if (driver.FindElement(by).Displayed || driver.FindElement(by).Enabled)
+            {
+                return true;
+            }
+            else
+            { return false; }
+        }
+        public bool IsClickable(By by)
+        {
+            try
+            {
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public static void OpenUrl(string url)
         {
@@ -85,9 +165,7 @@ namespace ProjectUniworth
         }
         public bool IsPageReady(IWebDriver driver)
         {
-            return ((IJavaScriptExecutor)driver)
-             .ExecuteScript("return document.readyState")
-             .Equals("complete");
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete");
         }
         public void Clear(By by)
 
@@ -100,26 +178,36 @@ namespace ProjectUniworth
             Actions actions = new Actions(driver);
 
             actions.MoveToElement(driver.FindElement(by)).Perform();
+
         }
         public static void HoverClick(By by)
 
         {
-            Actions actions = new Actions(driver);
-            actions.MoveToElement(driver.FindElement(by)).Click().Perform();
+            try
+            {
+                Actions actions = new Actions(driver);
+                actions.MoveToElement(driver.FindElement(by)).Click().Perform();
+                TakeScreenshot("Hover Click Element");
+            }
+            catch
+            {
+                TakeScreenshot(Status.Fail, "Failed to Hover Click");
+            }
+
         }
         public static void Maximize()
         {
             driver.Manage().Window.Maximize();
         }
-        public void CloseBrowser()
+        public static void CloseBrowser()
         {
             driver.Close();
         }
-        public void QuitBrowser()
+        public static void QuitBrowser()
         {
             driver.Quit();
         }
-        public void DisposeBrowser()
+        public static void DisposeBrowser()
         {
             driver.Dispose();
         }
@@ -136,12 +224,12 @@ namespace ProjectUniworth
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(value));
             return wait.Until(ExpectedConditions.ElementIsVisible(by));
         }
+        
         //public IWebElement FluentWait(By by, int value)
         //{
         //    FluentWait wait = new FluentWait(driver);
         //    WebDriverWait wait = new Web DriverWait(driver, TimeSpan.FromSeconds(value));
         //    return wait.Until(Driver IsPageReady(Driver) == true && ExpectedConditions.ElementIsVisible(by) == true && ExpectedConditions.IsClickable(by) == true);
-
         //}
         public void Wait(int milliSecs)
         {
@@ -201,23 +289,10 @@ namespace ProjectUniworth
             string str = element.GetAttribute("value");
             return str;
         }
-        public void Asserting(By by)
+        public static void AssertAreEqualMethod(By by, string expect)
         {
-
-            IWebElement element = driver.FindElement(by);
-            Assert.IsNull(by);
-            //Assert.AreEqual(value, by);
-            //Console.WriteLine(element);
-            //try
-            //{
-            //    Assert.AreEqual(status, by);
-            //    Console.WriteLine(status);
-            //}
-            //catch
-            //{
-            //    Assert.AreNotEqual(status, true);
-            //    Console.WriteLine(status);
-            //}
+            string actualText = driver.FindElement(by).Text;
+            Assert.AreEqual(expect, actualText);
         }
         public void DropDownItemMenu(By by, string value)
         {
@@ -229,14 +304,7 @@ namespace ProjectUniworth
             }
             catch
             {
-                try
-                {
-                    dropDownMenu.SelectByText(value);
-                }
-                catch
-                {
-                    dropDownMenu = null;
-                }
+                dropDownMenu.SelectByText(value);
             }
         }
         public void dropDownItemSelectByText(By by, string text)
@@ -287,21 +355,6 @@ namespace ProjectUniworth
         {
             driver.SwitchTo().Alert().Dismiss();
         }
-        //public static ExtentReports extentReports;
-        //public static ExtentTest exParentTest;
-        //public static ExtentTest exChildTest;
-        //public static string dirpath;
-
-        //public static void LogReport(string testcase)
-        //{
-        //    ExtentReports report = new ExtentReports();
-        //    dirpath = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports" + testcase;
-        //    ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(dirpath);
-        //    htmlReporter.Config.Theme = Theme.Standard;
-        //    extentReports.AttachReporter(htmlReporter);
-
-        //}
-
     }
 }
 

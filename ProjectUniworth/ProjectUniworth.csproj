@@ -469,32 +469,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddToCartFunctionality\AddToCart.cs" />
-    <Compile Include="AddToCartFunctionality\AddToCartTestClass.cs" />
+    <Compile Include="POM\AddToCartFunctionality\AddToCart.cs" />
+    <Compile Include="POM\AddToCartFunctionality\AddToCartTestClass.cs" />
     <Compile Include="BaseClass.cs" />
-    <Compile Include="ChatWithUsFunctionality\ChatWithUs.cs" />
-    <Compile Include="ChatWithUsFunctionality\ChatWithUsTestClass.cs" />
-    <Compile Include="DeleteItemFromCartFunctionality\DeleteItemFromCart.cs" />
-    <Compile Include="DeleteItemFromCartFunctionality\DeleteItemFromCartTestClass.cs" />
-    <Compile Include="FilterBarFunctionality\FilterBar.cs" />
-    <Compile Include="FilterBarFunctionality\FilterBarTestClass.cs" />
-    <Compile Include="FindOurStoreFunctionality\FindOurStore.cs" />
-    <Compile Include="FindOurStoreFunctionality\FindOurStoreTestClass.cs" />
-    <Compile Include="ExtentReport\ExtentR.cs" />
-    <Compile Include="LoginFunctionality\LoginClass.cs" />
-    <Compile Include="LoginFunctionality\LoginTestClass.cs" />
-    <Compile Include="NavigationBarFunctionality\NavigationBar.cs" />
-    <Compile Include="NavigationBarFunctionality\NavigationBarTestClass.cs" />
-    <Compile Include="Newsletter Subscription\Newsletter.cs" />
-    <Compile Include="Newsletter Subscription\NewsletterSubscriptionTestClass.cs" />
-    <Compile Include="Proceed To Checkout Functionality\ProceedToCheckout.cs" />
-    <Compile Include="Proceed To Checkout Functionality\ProceedToCheckoutTestClass.cs" />
-    <Compile Include="RegistrationFunctionality\RegisterUser.cs" />
-    <Compile Include="RegistrationFunctionality\RegistrationTestClass.cs" />
-    <Compile Include="SearchFunctionality\SearchClass.cs" />
-    <Compile Include="SearchFunctionality\SearchTestClass.cs" />
-    <Compile Include="SortingFunctionality\SortingItems.cs" />
-    <Compile Include="SortingFunctionality\SortingTestClass.cs" />
+    <Compile Include="POM\ChatWithUsFunctionality\ChatWithUs.cs" />
+    <Compile Include="POM\ChatWithUsFunctionality\ChatWithUsTestClass.cs" />
+    <Compile Include="POM\DeleteItemFromCartFunctionality\DeleteItemFromCart.cs" />
+    <Compile Include="POM\DeleteItemFromCartFunctionality\DeleteItemFromCartTestClass.cs" />
+    <Compile Include="POM\FilterBarFunctionality\FilterBar.cs" />
+    <Compile Include="POM\FilterBarFunctionality\FilterBarTestClass.cs" />
+    <Compile Include="POM\FindOurStoreFunctionality\FindOurStore.cs" />
+    <Compile Include="POM\FindOurStoreFunctionality\FindOurStoreTestClass.cs" />
+    <Compile Include="ExtentR.cs" />
+    <Compile Include="POM\LoginFunctionality\LoginClass.cs" />
+    <Compile Include="POM\LoginFunctionality\LoginTestClass.cs" />
+    <Compile Include="POM\NavigationBarFunctionality\NavigationBar.cs" />
+    <Compile Include="POM\NavigationBarFunctionality\NavigationBarTestClass.cs" />
+    <Compile Include="POM\Newsletter Subscription\Newsletter.cs" />
+    <Compile Include="POM\Newsletter Subscription\NewsletterSubscriptionTestClass.cs" />
+    <Compile Include="POM\Proceed To Checkout Functionality\ProceedToCheckout.cs" />
+    <Compile Include="POM\Proceed To Checkout Functionality\ProceedToCheckoutTestClass.cs" />
+    <Compile Include="POM\RegistrationFunctionality\RegisterUser.cs" />
+    <Compile Include="POM\RegistrationFunctionality\RegistrationTestClass.cs" />
+    <Compile Include="POM\SearchFunctionality\SearchClass.cs" />
+    <Compile Include="POM\SearchFunctionality\SearchTestClass.cs" />
+    <Compile Include="POM\SortingFunctionality\SortingItems.cs" />
+    <Compile Include="POM\SortingFunctionality\SortingTestClass.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
