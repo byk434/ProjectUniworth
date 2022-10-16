@@ -23,7 +23,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Registration Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -41,7 +41,7 @@ namespace ProjectUniworth
             newsletter.newsLetter();
             RegisterUser registerValidData = new RegisterUser();
             registerValidData.RegisterData("Babar Khan", "byk.isr@gmail.com", "03021049606", "Babar12345", "Babar12345");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         //[TestMethod]
         //public void RegisterUserWithInValidDataTest()
@@ -74,7 +74,7 @@ namespace ProjectUniworth
             string pass2 = TestContext.DataRow["confirmpassword"].ToString();
             RegisterUser regi = new RegisterUser();
             regi.RegisterData(name, email, mobileno, pass1, pass2);
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

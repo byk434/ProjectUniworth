@@ -23,7 +23,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Login Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -47,7 +47,7 @@ namespace ProjectUniworth
             string user = TestContext.DataRow["email"].ToString();
             string pass = TestContext.DataRow["password"].ToString();
             loginValidData.LoginData(user, pass);
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         [TestMethod]
         public void LogInUserInvalidDataTest()
@@ -60,7 +60,7 @@ namespace ProjectUniworth
             newsletter.newsLetter();
             LoginClass loginInvalidData = new LoginClass();
             loginInvalidData.LoginData("byk.isr@gmail.com", "434343434");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

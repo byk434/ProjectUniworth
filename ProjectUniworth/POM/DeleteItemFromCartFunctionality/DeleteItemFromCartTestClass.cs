@@ -22,7 +22,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Delete Item From Cart Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -44,7 +44,7 @@ namespace ProjectUniworth
             addToCart.AddItemFromItemPage();
             DeleteItemFromCart deletingItem = new DeleteItemFromCart();
             deletingItem.deleteItem();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Filter Bar Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -42,7 +42,7 @@ namespace ProjectUniworth
             navBar.NavigationBarFunction();
             FilterBar filterBarSelectColor = new FilterBar();
             filterBarSelectColor.FilterBarFunction();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

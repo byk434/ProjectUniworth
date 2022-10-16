@@ -22,7 +22,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Proceed To Cart Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -46,7 +46,7 @@ namespace ProjectUniworth
             PTC.ProceedToCO();
             ProceedToCheckout UserIsGuest = new ProceedToCheckout();
             UserIsGuest.AsGuest("booo", "imran1@gmail.com", "03021048606", "Pakistan", "Punjab", "LAHORE", "54000", "bobo1", "bobo1", "juju road", "jiji town");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         [TestMethod]
         public void ProceedToCheckOutAsNewUser()
@@ -65,7 +65,7 @@ namespace ProjectUniworth
             UserIsRegistering.ProceedToCO();
             UserIsRegistering.RegisterNewUser();
             UserIsRegistering.AsGuest("booo", "imran12@gmail.com", "03021058606", "Pakistan", "Punjab", "LAHORE", "54000", "bobobob1", "bobobob1", "juju road", "jiji town");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         [TestMethod]
         public void ProceedToCheckOutAsExistingUser()
@@ -83,7 +83,7 @@ namespace ProjectUniworth
             ProceedToCheckout alreadyExistingUser = new ProceedToCheckout();
             alreadyExistingUser.ProceedToCO();
             alreadyExistingUser.ExistingUser("byk.isr@gmail.com", "Babar12345", "Lahore", "jiji town");
-            BaseClass.CloseBrowser();
-       }
+            BaseClass.QuitBrowser();
+        }
     }
 }

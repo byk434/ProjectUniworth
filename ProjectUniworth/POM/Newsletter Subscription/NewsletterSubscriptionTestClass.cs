@@ -22,7 +22,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Newletter Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -38,7 +38,7 @@ namespace ProjectUniworth
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter subValidData = new Newsletter();
             subValidData.SubscribeNewsletter("03004545424", "aqsa.aqua@gmail.com");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         [TestMethod]
 
@@ -50,7 +50,7 @@ namespace ProjectUniworth
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter subInvalidData = new Newsletter();
             subInvalidData.SubscribeNewsletter("030021049606", "bykisrgmail.com");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

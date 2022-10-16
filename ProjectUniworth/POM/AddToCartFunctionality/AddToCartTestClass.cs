@@ -25,7 +25,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Add to Cart Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -45,7 +45,7 @@ namespace ProjectUniworth
             searching.SearchFunction("shirts");
             AddToCart addToCart = new AddToCart();
             addToCart.AddItemThroughButton();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
             
         }
         [TestMethod]

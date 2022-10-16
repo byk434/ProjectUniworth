@@ -23,7 +23,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Search Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -41,7 +41,7 @@ namespace ProjectUniworth
             newsletter.newsLetter();
             SearchClass emptySearch = new SearchClass();
             emptySearch.SearchFunction("");
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         [TestMethod]
         public void SearchWithValidDataTest()
@@ -55,7 +55,7 @@ namespace ProjectUniworth
             SearchClass validSearch = new SearchClass();
             validSearch.SearchFunction("shirts");
             validSearch.messages();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
         [TestMethod]
         public void SearchWithInvalidDataTest()
@@ -69,7 +69,7 @@ namespace ProjectUniworth
             SearchClass invalidSearch = new SearchClass();
             invalidSearch.SearchFunction("mobile");
             invalidSearch.messages();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Chat With Us Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -35,13 +35,15 @@ namespace ProjectUniworth
         {
             exParentTest = extentReports.CreateTest(TestContext.TestName);
             exChildTest = exParentTest.CreateNode("Chat Functionality Test");
+            //ExtentReport.extentReports.CreateTest("Chat With Us Test Case");
+
             BaseClass.BrowserImplemented("edge");
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter newsletter = new Newsletter();
             newsletter.newsLetter();
             ChatWithUs chatWithUs = new ChatWithUs();
             chatWithUs.ChatWithUsFunctionality();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

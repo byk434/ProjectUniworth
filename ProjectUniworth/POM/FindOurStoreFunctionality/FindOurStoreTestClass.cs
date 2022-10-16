@@ -21,7 +21,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Find Our Store Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -39,7 +39,7 @@ namespace ProjectUniworth
             newsletter.newsLetter();
             FindOurStore findStore = new FindOurStore();
             findStore.findStore();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

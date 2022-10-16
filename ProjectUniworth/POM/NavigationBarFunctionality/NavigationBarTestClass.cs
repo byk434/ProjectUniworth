@@ -22,7 +22,7 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
             
-            ExtentReport.LogReport("Extent Report");
+            ExtentReport.LogReport("Navigation Bar Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
@@ -40,7 +40,7 @@ namespace ProjectUniworth
             newsletter.newsLetter();
             NavigationBar navBar = new NavigationBar();
             navBar.NavigationBarFunction();
-            BaseClass.CloseBrowser();
+            BaseClass.QuitBrowser();
         }
     }
 }

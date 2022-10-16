@@ -72,10 +72,10 @@ namespace ProjectUniworth
                 driver.FindElement(by).SendKeys(value);
                 TakeScreenshot(Status.Pass, "Enter Text");
             }
-            catch (Exception ex)
+            catch 
             {
 
-                TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
+                TakeScreenshot(Status.Fail, "Entering Text Failed ");
             }
         }
         public void WriteEnter(By by, string value)
@@ -84,11 +84,11 @@ namespace ProjectUniworth
                 driver.FindElement(by).SendKeys(value + Keys.Enter);
                 TakeScreenshot(Status.Pass, "Enter Text");
             }
-            catch (Exception ex)
+            catch 
             {
-                TakeScreenshot(Status.Fail, "Enter Text: " + ex.ToString());
+                TakeScreenshot(Status.Fail, "Entering Text Failed ");
             }
-            
+
         }
         public void WriteTab(By by, string value)
         {
@@ -108,14 +108,14 @@ namespace ProjectUniworth
         }
         public static void TakeScreenshot(string stepDetail)
         {
-            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
             Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
             image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
             ExtentReport.exChildTest.Log(Status.Pass, stepDetail, MediaEntityBuilder.CreateScreenCaptureFromPath(path + ".png").Build());
         }
         public static void TakeScreenshot(Status status, string stepDetail)
         {
-            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
             Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
             image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
             ExtentReport.exChildTest.Log(status, stepDetail, MediaEntityBuilder.CreateScreenCaptureFromPath(path + ".png").Build());

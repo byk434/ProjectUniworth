@@ -185,15 +185,6 @@ namespace ProjectUniworth
         //    Sorting sortingFunctionality = new Sorting();
         //    sortingFunctionality.SortingFunction();
         //}
-        [TestMethod]
-        public void Juni()
-        {
-            BrowserImplemented("edge");
-            OpenUrl("https://www.junaidjamshed.com/select-country");
-            Newsletter junaid = new Newsletter();
-            junaid.junJ();
-
-        }
     }
 }
 

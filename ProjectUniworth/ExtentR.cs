@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Reporter.Configuration;
-using Microsoft.Azure.WebJobs.Description;
 
 namespace ProjectUniworth
 {
@@ -20,12 +19,11 @@ namespace ProjectUniworth
         public static void LogReport(string testcase)
         {
             extentReports = new ExtentReports();
-            dirpath = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\" + testcase;
-            ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(dirpath);
-            htmlReporter.Config.Theme = Theme.Standard;
+            dirpath = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports" + testcase + ".html";
+            ExtentV3HtmlReporter htmlReporter = new ExtentV3HtmlReporter(dirpath);
+            //ExtentHtmlReporter html = ExtentHtmlReporter(dirpath);
+            htmlReporter.Config.Theme = Theme.Dark;
             extentReports.AttachReporter(htmlReporter);
         }
-
-        
     }
 }
