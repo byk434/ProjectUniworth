@@ -38,8 +38,9 @@ namespace ProjectUniworth
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter newsletter = new Newsletter();
             newsletter.newsLetter();
-            SearchClass searching = new SearchClass();
-            searching.SearchFunction("shirts");
+            NavigationBar NavBar = new NavigationBar();
+            NavBar.NavigationBarFunction();
+            NavBar.NavBarSelectShirt();
             AddToCart addToCart = new AddToCart();
             addToCart.AddItemFromItemPage();
             ProceedToCheckout PTC = new ProceedToCheckout();
@@ -57,8 +58,9 @@ namespace ProjectUniworth
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter newsletter = new Newsletter();
             newsletter.newsLetter();
-            SearchClass searching = new SearchClass();
-            searching.SearchFunction("shirts");
+            NavigationBar NavBar = new NavigationBar();
+            NavBar.NavigationBarFunction();
+            NavBar.NavBarSelectShirt();
             AddToCart addToCart = new AddToCart();
             addToCart.AddItemFromItemPage();
             ProceedToCheckout UserIsRegistering = new ProceedToCheckout();
@@ -76,8 +78,9 @@ namespace ProjectUniworth
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter newsletter = new Newsletter();
             newsletter.newsLetter();
-            SearchClass searching = new SearchClass();
-            searching.SearchFunction("shirts");
+            NavigationBar NavBar = new NavigationBar();
+            NavBar.NavigationBarFunction();
+            NavBar.NavBarSelectShirt();
             AddToCart addToCart = new AddToCart();
             addToCart.AddItemFromItemPage();
             ProceedToCheckout alreadyExistingUser = new ProceedToCheckout();

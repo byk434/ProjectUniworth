@@ -276,10 +276,11 @@ namespace ProjectUniworth
         {
             driver.SwitchTo().DefaultContent();
         }
-        public static void AssertAreEqualMethod(By by, string expect)
+        public static void AssertAreEqualMethod(string expect, By by)
         {
             string actualText = driver.FindElement(by).Text;
             Assert.AreEqual(expect, actualText);
+            Console.WriteLine(expect, actualText);
         }
         public void DropDownItemMenu(By by, string value)
         {

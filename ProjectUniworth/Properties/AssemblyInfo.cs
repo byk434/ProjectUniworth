@@ -1,6 +1,9 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using ExecutionScope = Microsoft.VisualStudio.TestTools.UnitTesting.ExecutionScope;
+
 
 [assembly: AssemblyTitle("ProjectUniworth")]
 [assembly: AssemblyDescription("")]
@@ -15,7 +18,7 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("e6c4c7ed-916c-4d9e-b514-555e1acc8ab5")]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
-
+//[assembly: Parallelize(Workers = 3, Scope = ExecutionScope.MethodLevel)]
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
