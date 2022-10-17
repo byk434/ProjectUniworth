@@ -22,12 +22,12 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Delete Item From Cart Functionality Report");
+            LogReport("Delete Item From Cart Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod]
         public void DeleteItemFromCartTest()

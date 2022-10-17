@@ -24,19 +24,18 @@ namespace ProjectUniworth
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-
-            ExtentReport.LogReport("Add to Cart Functionality Report");
+            LogReport("Add To Cart Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod]
-        public void AddToCartFromButtonTest()
+        public void AddToCartFromProductTileButtonTest()
         {
             exParentTest = extentReports.CreateTest(TestContext.TestName);
-            exChildTest = exParentTest.CreateNode("Add To Cart From Button");
+            exChildTest = exParentTest.CreateNode("Add To Cart From Prodct Tile Button Test");
             BaseClass.BrowserImplemented("edge");
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter newsletter = new Newsletter();
@@ -49,10 +48,10 @@ namespace ProjectUniworth
             
         }
         [TestMethod]
-        public void AddToCartFromItemPageTest()
+        public void AddToCartFromProductPageTest()
         {
             exParentTest = extentReports.CreateTest(TestContext.TestName);
-            exChildTest = exParentTest.CreateNode("Add To Cart From Item Page");
+            exChildTest = exParentTest.CreateNode("Add To Cart From Product Page Test");
             BaseClass.BrowserImplemented("edge");
             BaseClass.OpenUrl("https://uniworthshop.com");
             Newsletter newsletter = new Newsletter();

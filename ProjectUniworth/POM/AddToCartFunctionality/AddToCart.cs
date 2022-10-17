@@ -17,17 +17,19 @@ namespace ProjectUniworth
         //private static readonly log4net.ILog log =
         //log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        By productTile = By.XPath("(//div[@class='col-6 col-sm-6 col-md-4 col-lg-4 item'])[3]");
-        By addToCartButton = By.XPath("(//i[@class='icon anm anm-cart-l'])[3]");
+        By productTile = By.XPath("(//div[@class='col-6 col-sm-6 col-md-4 col-lg-4 item'])[4]");
+        By addToCartButton = By.XPath("(//i[@class='icon anm anm-cart-l'])[4]");
         By sizeOfItem = By.XPath("//label[@class='swatchLbl medium']");
         By addItemToCartButton = By.XPath("//button[@class='btn product-form__cart-submit']");
         By headerItemCartButton = By.XPath("//i[@class='icon anm anm-bag-l']");
         By continueButton = By.XPath("//button[@class='btn-button close-box bordered let-closeminibar-popup']");
         By cartDrawerText = By.XPath("//div[@id='cart-drawer']/h4");
         By itemAddorRemoveAlertText = By.XPath("//div[@class='alert alert-success']");
+        By itemNotAvailable = By.XPath("//div[@class='alert alert-warning']");
         public void AddItemThroughButton()
         {
-            ScrollToElement(productTile);
+            ScrollBy(0, 500);
+            //ScrollToElement(productTile);
             //log.Info("Scrolling to product tile");
             Hover(productTile);
             //log.Info("Hovering over product");
@@ -50,7 +52,15 @@ namespace ProjectUniworth
             Click(sizeOfItem);
             Click(addItemToCartButton);
             Click(continueButton);
-            GetElement(itemAddorRemoveAlertText);
+            try
+            {
+                GetElement(itemNotAvailable);
+            }
+            catch
+            {
+                GetElement(itemAddorRemoveAlertText);
+            }
+           
             Click(headerItemCartButton);
             GetElement(cartDrawerText);
             

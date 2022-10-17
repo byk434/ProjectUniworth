@@ -20,6 +20,7 @@ namespace ProjectUniworth
         By registerButton = By.XPath("//input[@value='Register']");
         By errorMsg = By.XPath("//span[text()='  The confirm password and password must match.']");
         By successRegi = By.XPath("//b[text()='Success!  ']");
+        By errorMsg2 = By.XPath("(//span[@class='error'])[5]");
         //b[text()="Success!  "]//parent::div
         ////div[@class="alert alert-success"]//child::b
         public void RegisterData(string fullName, string emailAddress, string mobileN, string password, string passwordConfirm)
@@ -33,13 +34,22 @@ namespace ProjectUniworth
             Write(enterPassword, password);
             Write(confirmPassword, passwordConfirm);
             Click(registerButton);
+            ImplicitWait(10);
             try
             {
                 GetElement(errorMsg);
             }
             catch
             {
-                GetElement(successRegi);
+                try
+                {
+                    GetElement(errorMsg2);
+                }
+                catch
+                {
+                    GetElement(successRegi);
+                }
+                
             }
         }
 

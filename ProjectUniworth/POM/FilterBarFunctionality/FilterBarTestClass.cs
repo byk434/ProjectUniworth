@@ -22,12 +22,12 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Filter Bar Functionality Report");
+            LogReport("Filter Bar Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod]
         public void FilterBarFunctionalityTestCase()

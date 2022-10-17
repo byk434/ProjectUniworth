@@ -23,12 +23,12 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Registration Functionality Report");
+            LogReport("Registration Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod]
         public void RegisterUserWithValidDataTest()
@@ -40,7 +40,7 @@ namespace ProjectUniworth
             Newsletter newsletter = new Newsletter();
             newsletter.newsLetter();
             RegisterUser registerValidData = new RegisterUser();
-            registerValidData.RegisterData("Babar Khan", "byk.isr@gmail.com", "03021049606", "Babar12345", "Babar12345");
+            registerValidData.RegisterData("Babar Khan", "bizarrejizzus@gmail.com", "03021049608", "Babar12345", "Babar12345");
             BaseClass.QuitBrowser();
         }
         //[TestMethod]

@@ -23,12 +23,12 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Login Functionality Report");
+            LogReport("Login Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod, TestCategory("Login")]
 

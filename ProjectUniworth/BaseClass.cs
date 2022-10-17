@@ -21,11 +21,13 @@ using SeleniumExtras.WaitHelpers;
 using SikuliModule;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Serialization;
+using System.Xml.Linq;
 
 namespace ProjectUniworth
 {
     public class BaseClass
     {
+
         public static IWebDriver driver;
 
 
@@ -106,16 +108,45 @@ namespace ProjectUniworth
                 TakeScreenshot(Status.Fail, "Element not Clicked");
             }
         }
+        public static void Hover(By by)
+
+        {
+            try
+            {
+                Actions actions = new Actions(driver);
+                actions.MoveToElement(driver.FindElement(by)).Perform();
+                TakeScreenshot("Hover Click Element");
+            }
+            catch
+            {
+                TakeScreenshot(Status.Fail, "Failed to Hover Click");
+            }
+        }
+        public static void HoverClick(By by)
+
+        {
+            try
+            {
+                Actions actions = new Actions(driver);
+                actions.MoveToElement(driver.FindElement(by)).Click().Perform();
+                TakeScreenshot("Hover Click Element");
+            }
+            catch
+            {
+                TakeScreenshot(Status.Fail, "Failed to Hover Click");
+            }
+
+        }
         public static void TakeScreenshot(string stepDetail)
         {
-            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\Images\" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
             Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
             image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
             ExtentReport.exChildTest.Log(Status.Pass, stepDetail, MediaEntityBuilder.CreateScreenCaptureFromPath(path + ".png").Build());
         }
         public static void TakeScreenshot(Status status, string stepDetail)
         {
-            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\ExtentReports" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string path = @"C:\Users\Hp\Source\Repos\ProjectUniworth\ProjectUniworth\ExtentReports\Images\" + "TestExecLog_" + DateTime.Now.ToString("yyyyMMddHHmmss");
             Screenshot image_username = ((ITakesScreenshot)driver).GetScreenshot();
             image_username.SaveAsFile(path + ".png", ScreenshotImageFormat.Png);
             ExtentReport.exChildTest.Log(status, stepDetail, MediaEntityBuilder.CreateScreenCaptureFromPath(path + ".png").Build());
@@ -172,29 +203,7 @@ namespace ProjectUniworth
         {
             driver.FindElement(by).Clear();
         }
-        public static void Hover(By by)
-
-        {
-            Actions actions = new Actions(driver);
-
-            actions.MoveToElement(driver.FindElement(by)).Perform();
-
-        }
-        public static void HoverClick(By by)
-
-        {
-            try
-            {
-                Actions actions = new Actions(driver);
-                actions.MoveToElement(driver.FindElement(by)).Click().Perform();
-                TakeScreenshot("Hover Click Element");
-            }
-            catch
-            {
-                TakeScreenshot(Status.Fail, "Failed to Hover Click");
-            }
-
-        }
+        
         public static void Maximize()
         {
             driver.Manage().Window.Maximize();
@@ -224,13 +233,6 @@ namespace ProjectUniworth
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(value));
             return wait.Until(ExpectedConditions.ElementIsVisible(by));
         }
-        
-        //public IWebElement FluentWait(By by, int value)
-        //{
-        //    FluentWait wait = new FluentWait(driver);
-        //    WebDriverWait wait = new Web DriverWait(driver, TimeSpan.FromSeconds(value));
-        //    return wait.Until(Driver IsPageReady(Driver) == true && ExpectedConditions.ElementIsVisible(by) == true && ExpectedConditions.IsClickable(by) == true);
-        //}
         public void Wait(int milliSecs)
         {
             Thread.Sleep(milliSecs);
@@ -250,15 +252,7 @@ namespace ProjectUniworth
         {
             IJavaScriptExecutor js = driver as IJavaScriptExecutor;
 
-            js.ExecuteScript("window.scrollBy({0},{1};", value, value1);
-        }
-        public void ScrollPageDown()
-        {
-            IJavaScriptExecutor scroller = (IJavaScriptExecutor)driver;
-            for (int i = 0; i < 1000; i++)
-            {
-                scroller.ExecuteScript("window.scrollBy(0," + i + ")", "");
-            }
+            js.ExecuteScript("window.scrollBy([0],[1]);", value, value1);
         }
         public void ScrollPageUp()
         {
@@ -282,13 +276,6 @@ namespace ProjectUniworth
         {
             driver.SwitchTo().DefaultContent();
         }
-        public string GetText(By by)
-        {
-
-            IWebElement element = driver.FindElement(by);
-            string str = element.GetAttribute("value");
-            return str;
-        }
         public static void AssertAreEqualMethod(By by, string expect)
         {
             string actualText = driver.FindElement(by).Text;
@@ -306,12 +293,6 @@ namespace ProjectUniworth
             {
                 dropDownMenu.SelectByText(value);
             }
-        }
-        public void dropDownItemSelectByText(By by, string text)
-        {
-            IWebElement drpDown = driver.FindElement(by);
-            SelectElement dropDownMenu = new SelectElement(drpDown);
-            dropDownMenu.SelectByText(text);
         }
 
         public void GetElement(By by)

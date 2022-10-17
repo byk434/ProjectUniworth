@@ -23,12 +23,12 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Search Functionality Report");
+            LogReport("Search Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod]
         public void SearchWithEmptySearchBarTest()

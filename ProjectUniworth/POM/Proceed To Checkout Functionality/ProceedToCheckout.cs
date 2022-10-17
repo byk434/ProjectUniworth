@@ -33,6 +33,7 @@ namespace ProjectUniworth
         By userPassword = By.XPath("(//input[@type='password'])[1]");
         By loginUser = By.XPath("//button[@class='btn btn-primary mt-3']");
         By alertMsg = By.XPath("//div[@class='alert alert-success']");
+        By errorMsgAlreadyExisting = By.XPath("//div[@class='alert alert-danger']");
         public void ProceedToCO()
         {
             Click(proceedToCheckoutButton);
@@ -52,6 +53,7 @@ namespace ProjectUniworth
             ScrollPageUp();
             HoverClick(selectPaymentMethod);
             Click(submitButton);
+            ExplicitWait(thankYouMsg, 10);
             GetElement(thankYouMsg);
         }
         public void AsGuest(string name, string email, string phone, string country, string state, string city, string codeZip, string pass1, string pass2, string add1, string add2)
@@ -88,7 +90,16 @@ namespace ProjectUniworth
             ExplicitWait(selectPaymentMethod, 20);
             HoverClick(selectPaymentMethod);
             Click(submitButton);
-            GetElement(thankYouMsg);
+            try
+            {
+                ExplicitWait(errorMsgAlreadyExisting, 10);
+                GetElement(errorMsgAlreadyExisting);
+            }
+            catch
+            {
+                ExplicitWait(thankYouMsg, 10);
+                GetElement(thankYouMsg);
+            }
         }
         public void RegisterNewUser()
         {

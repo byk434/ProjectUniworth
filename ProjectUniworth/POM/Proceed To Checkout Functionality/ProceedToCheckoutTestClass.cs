@@ -22,12 +22,12 @@ namespace ProjectUniworth
         public static void ClassInitialize(TestContext testContext)
         {
 
-            ExtentReport.LogReport("Proceed To Cart Functionality Report");
+            LogReport("Proceed To Cart Functionality Report");
         }
         [ClassCleanup]
         public static void ClassCleanUp()
         {
-            ExtentReport.extentReports.Flush();
+            extentReports.Flush();
         }
         [TestMethod]
         public void ProceedToCheckOutAsAGuest()
@@ -82,7 +82,7 @@ namespace ProjectUniworth
             addToCart.AddItemFromItemPage();
             ProceedToCheckout alreadyExistingUser = new ProceedToCheckout();
             alreadyExistingUser.ProceedToCO();
-            alreadyExistingUser.ExistingUser("byk.isr@gmail.com", "Babar12345", "Lahore", "jiji town");
+            alreadyExistingUser.ExistingUser("bizarrejizzus@gmail.com", "Dude12345", "Lahore", "jiji town");
             BaseClass.QuitBrowser();
         }
     }
