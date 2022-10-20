@@ -31,9 +31,6 @@ namespace ProjectUniworth
             
             ExtentV3HtmlReporter htmlReporter = new ExtentV3HtmlReporter(dirpath);
             //ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(dirpath);
-            
-            //htmlReporter.ReporterName = "Babar Yaseen Khan";
-
             htmlReporter.Config.Theme = Theme.Standard;
             extentReports.AttachReporter(htmlReporter); 
         }
